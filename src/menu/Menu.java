@@ -29,7 +29,7 @@ public class Menu {
 			System.out.println("                                                     ");
 			System.out.println("            1 - Criar/cadastrar um produto           ");
 			System.out.println("            2 - Listar todas os Produtos             ");
-			System.out.println("            3 - Buscar produto por Id                ");
+			System.out.println("            3 - Buscar produto por tipo              ");
 			System.out.println("            4 - Atualizar estoque                    ");
 			System.out.println("            5 - Deletar do estoque                   ");
 			System.out.println("            6 - Sair                                 ");
