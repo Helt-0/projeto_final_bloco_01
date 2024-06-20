@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import menu.controller.MenuController;
+import menu.model.Calcas;
 import menu.util.Cores;
 
 public class Menu {
@@ -14,6 +16,8 @@ public class Menu {
 		String pecaDeRoupa;
 		
 		Scanner leia = new Scanner(System.in);
+		
+		MenuController produtos = new MenuController();
 		
 		while(true) {
 			System.out.println(Cores.TEXT_PURPLE_BRIGHT + Cores.ANSI_BLACK_BACKGROUND
@@ -63,11 +67,15 @@ public class Menu {
 			System.out.println("Quantas peças desse mesmo tipo ?");
 			quantidade = leia.nextInt();
 			
+			produtos.cadastrar(new Calcas( pecaDeRoupa,tipo, quantidade));
+			
 			keyPress();
 			break;
 	
 		case 2:
 			System.out.println("Listar todas os Produtos  \n\n");
+			
+			produtos.listarTodos();
 
 			keyPress();
 			break;

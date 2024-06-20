@@ -30,7 +30,6 @@ public abstract class Produtos {
 		this.tipo = tipo;
 	}
 
-
 	public void visualizar() {
 
 		String tipo = "";

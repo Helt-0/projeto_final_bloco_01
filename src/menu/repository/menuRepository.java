@@ -2,7 +2,7 @@ package menu.repository;
 
 import menu.model.Produtos;
 
-public interface menuRepository {
+public interface MenuRepository {
 
 	//CRUD do menu
 	public void cadastrar(Produtos produtos);
