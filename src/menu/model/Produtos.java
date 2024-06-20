@@ -3,7 +3,7 @@ package menu.model;
 public abstract class Produtos {
 	
 	private String pecaDeRoupa;
-	int tipo;
+	private int tipo;
 	
 	public Produtos(String pecaDeRoupa,int tipo) {
 		this.pecaDeRoupa = pecaDeRoupa;
@@ -32,14 +32,14 @@ public abstract class Produtos {
 
 	public void visualizar() {
 
-		String tipo = "";
+		String modelo = "";
 
 		switch(this.tipo) {
 		case 1:
-			tipo = "Moletom";
+			modelo = "Moletom";
 			break;
 		case 2:
-			tipo = "Jeans";
+			modelo = "Jeans";
 			break;
 		}
 
@@ -47,7 +47,7 @@ public abstract class Produtos {
 		System.out.println("Dados do estoque :");
 		System.out.println("***********************************************************");
 		System.out.println("Peça de roupa: " + this.pecaDeRoupa);
-		System.out.println("tipo: " + this.tipo);
+		System.out.println("tipo: " + modelo);
 		
 	}
 	

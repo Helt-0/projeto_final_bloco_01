@@ -57,9 +57,10 @@ public class Menu {
 		case 1:
 			System.out.println("Criar/cadastrar um produto\n\n");
 			
-			System.out.println("Qual peça você deseja cadastrar ?");
+			System.out.println("Qual peça você deseja cadastrar? (no momento só vendemos calça...)");
 			leia.skip("\\R?");
-			pecaDeRoupa = leia.nextLine();
+			pecaDeRoupa = leia.nextLine().toLowerCase();
+			if (pecaDeRoupa.equals("calça")) {
 			
 			System.out.println("Digite o tipo do produto (1 para moletom, 2 para Jeans): ");
 			tipo = leia.nextInt();
@@ -68,6 +69,7 @@ public class Menu {
 			quantidade = leia.nextInt();
 			
 			produtos.cadastrar(new Calcas( pecaDeRoupa,tipo, quantidade));
+			}else {System.out.println("Ainda não vendemos peças desse tipo");}
 			
 			keyPress();
 			break;
@@ -81,19 +83,59 @@ public class Menu {
 			break;
 		
 		case 3:
-			System.out.println("Consultar dados da Conta - por número\n\n");
+			System.out.println("Buscar produto por tipo\n\n");
 
+			System.out.println("Digite o tipo da peça (1 para moletom, 2 para Jeans): ");
+			tipo = leia.nextInt();
+			if(tipo ==2 || tipo == 1) {
+			
+			produtos.procurarPorTipo(tipo);
+			}else {System.out.println("Tipo invalido");}
 			keyPress();
 			break;
 		
 		case 4:
 			System.out.println("Atualizar estoque\n\n");
-
+			
+			System.out.println("Atualizar o estoque de qual peça?");
+			leia.skip("\\R?");
+			pecaDeRoupa = leia.nextLine();
+			
+			System.out.println("Qual tipo de "+pecaDeRoupa+" Você quer atualizar? (1 para moletom, 2 para jeans)");
+			tipo = leia.nextInt();
+			
+			if(tipo ==2 || tipo == 1) {
+			
+			var buscaProduto = produtos.buscarNaCollection(tipo);
+			
+			if(buscaProduto != null) {
+				
+				switch(tipo) {
+				
+				case 1 -> {System.out.println("Digite a nova quantidade de Moletons: ");
+				quantidade = leia.nextInt();
+				
+				produtos.atualizarEstoque(new Calcas(pecaDeRoupa, tipo, quantidade));
+				}
+				case 2 -> {System.out.println("Digite a nova quantidade de Jeans: ");
+				quantidade = leia.nextInt();
+				
+				produtos.atualizarEstoque(new Calcas(pecaDeRoupa, tipo, quantidade));
+				}
+				default -> {System.out.println("tipo inválido");}
+				}
+			}
+			}else {System.out.println("Tipo invalido");}
 			keyPress();
 			break;
 		
 		case 5:
 			System.out.println("Deletar produto\n\n");
+			
+			System.out.println("Qual o tipo da peça que você gostaria de remover do estoque? (1 para moletom, 2 para jeans)");
+			tipo = leia.nextInt();
+			
+			if(tipo ==2 || tipo == 1) {produtos.deletar(tipo);} else {System.out.println("Tipo invalido");}
 
 			keyPress();
 			break;
